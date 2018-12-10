@@ -1,10 +1,33 @@
-<h1> Abhinay </h1>
-{{loadingStatus$ | async}}
+<!-- <h1> Abhinay </h1>
+{{isAuth | async}} -->
 
-<button (click)="changeStatusTrue()">True Status</button>
-<button (click)="changeStatusFalse()"> False Status</button>
+<!-- {{AvailableEx$ | async}} -->
+<div class="Available" *ngIf="(AvailableEx$ | async).length">
+  <span>List of Available Exercise</span>
+  <div *ngFor="let Exercise of (AvailableEx$ | async) ">
+    {{Exercise.name}}
+  </div>
+</div>
+<div class="Completed" *ngIf="(CompletedEx$ | async).length">
+  <span>List of Completed Exercise</span>
+  <div *ngFor="let Exercise of (CompletedEx$ | async) ">
+    {{Exercise.name}}
+  </div>
+</div>
+<!-- addNewToAvailable -->
+<button (click)="addToAvailable()">Add to Available</button>
+<button (click)="addNewToAvailable()">Add More to Available</button>
+<button (click)="addToCompleted()"> Add to completed</button>
 
-<div *ngIf="post | async as p">
+<div class="container">
+    <div class="box_A"> <app-blue> </app-blue></div>
+    <div class="box_B"> <app-green></app-green></div>
+</div>
+
+<!-- <button (click)="changeStatusTrue()">True Status</button>
+<button (click)="changeStatusFalse()"> False Status</button> -->
+
+<!-- <div *ngIf="post | async as p">
 
 
   <h2>{{ p.text }}</h2>
@@ -17,4 +40,4 @@
   <input [(ngModel)]="text">
   <button (click)="editText()" >Change Title</button>
 
-</div>
+</div> -->

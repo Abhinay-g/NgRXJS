@@ -1,35 +1,23 @@
-import { Action } from '@ngrx/store';
+import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
+import * as fromAuth from './reducers/auth.reducer';
+import * as fromTraining from './reducers/training.reducer';
+import { AuthenticatedState } from './models/auth.model';
+import { TrainingState } from './models/training.model';
 
 export interface State {
-    isLoading: boolean;
+    auth: AuthenticatedState;
+    training: TrainingState;
 }
-// reducer is a function
-// takes state as input
-const initialState: State = {
-    isLoading: false
+
+export const reducers: ActionReducerMap<State> = {
+    auth: fromAuth.authReducer,
+    training: fromTraining.trainingReducer
 };
-export function appReducre(state: any = 'Hello World', action: Action) {
-    console.log(action.type, state);
-    switch (action.type) {
-        case 'START_LOADING':
-            return state = { val: 'Start Loading', pal: 'Abhinay' };
-        case 'STOP_LOADING':
-            return state = 'Stop Loading';
-        default:
-            return state;
-    }
-}
-// export function appReducre(state = initialState, action: Action) {
-//     switch (action.type) {
-//         case 'START_LOADING':
-//             return {
-//                 isLoading: true
-//             };
-//         case 'STOP_LOADING':
-//             return {
-//                 isLoading: false
-//             };
-//         default:
-//             return state;
-//     }
-// }
+
+export const getAuthState = createFeatureSelector<AuthenticatedState>('auth');
+export const getIsAuthenticated = createSelector(getAuthState, fromAuth.getIsAuth);
+
+export const getTrainingState = createFeatureSelector<TrainingState>('training');
+export const getAvailableTraining = createSelector(getTrainingState, fromTraining.getavailableTraining);
+export const getCompletedTraining = createSelector(getTrainingState, fromTraining.getfinishedTraining);
+export const getActiveTraining = createSelector(getTrainingState, fromTraining.getactiveTraining);
