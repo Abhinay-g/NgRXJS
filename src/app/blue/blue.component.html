@@ -1,7 +1,9 @@
-<p>
-  blue works!
-</p>
+<div><span>Blue Component</span></div>
 
-<div *ngFor="let Exercise of (data | async)">
-  {{Exercise.name}}
+<div *ngIf="(data | async)">
+  <div>{{ (data | async).id }}</div>
+  <div>{{ (data | async).name }}</div>
+  <div>{{ (data | async).duration }}</div>
+  <div>{{ (data | async).calories }}</div>
+  <div>{{ (data | async).state }}</div>
 </div>

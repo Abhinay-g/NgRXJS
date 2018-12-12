@@ -1,6 +1,6 @@
-import { Exercise } from '../AppModel/training.model';
+import { Exercise } from "../AppModel/training.model";
 export interface TrainingState {
-    availableTraining: Exercise[];
-    finishedTraining: Exercise[];
-    activeTraining: Exercise;
+  availableTraining: Exercise;
+  finishedTraining: Exercise;
+  activeTraining: Exercise;
 }

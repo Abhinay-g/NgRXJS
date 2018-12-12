@@ -1,43 +1,131 @@
-<!-- <h1> Abhinay </h1>
-{{isAuth | async}} -->
-
-<!-- {{AvailableEx$ | async}} -->
-<div class="Available" *ngIf="(AvailableEx$ | async).length">
-  <span>List of Available Exercise</span>
-  <div *ngFor="let Exercise of (AvailableEx$ | async) ">
-    {{Exercise.name}}
-  </div>
-</div>
-<div class="Completed" *ngIf="(CompletedEx$ | async).length">
-  <span>List of Completed Exercise</span>
-  <div *ngFor="let Exercise of (CompletedEx$ | async) ">
-    {{Exercise.name}}
-  </div>
-</div>
-<!-- addNewToAvailable -->
-<button (click)="addToAvailable()">Add to Available</button>
-<button (click)="addNewToAvailable()">Add More to Available</button>
-<button (click)="addToCompleted()"> Add to completed</button>
-
 <div class="container">
-    <div class="box_A"> <app-blue> </app-blue></div>
-    <div class="box_B"> <app-green></app-green></div>
+  <select
+    class="form-control"
+    #selectElem
+    (change)="onExerciseSelect(selectElem.value)"
+  >
+    <option [value]="">--Select--</option>
+    <option *ngFor="let Exercise of datalist" [value]="Exercise">
+      {{ Exercise }}</option
+    >
+  </select>
+
+  <form [formGroup]="myActivityForm" (ngSubmit)="onSubmit()" *ngIf="showForm">
+    <h1>Exercise Form</h1>
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input
+        type="text"
+        class="form-control"
+        id="id"
+        name="id"
+        required
+        formControlName="id"
+      />
+    </div>
+    <div class="form-group">
+      <label for="name">NAME</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        required
+        formControlName="name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="duration">DURATION</label>
+      <input
+        type="text"
+        class="form-control"
+        id="duration"
+        name="duration"
+        required
+        formControlName="duration"
+      />
+    </div>
+    <div class="form-group">
+      <label for="calories">CALORIES</label>
+      <input
+        type="text"
+        class="form-control"
+        id="calories"
+        name="calories"
+        required
+        formControlName="calories"
+      />
+    </div>
+    <div class="form-group">
+      <label for="state">STATE</label>
+      <input
+        type="text"
+        class="form-control"
+        id="state"
+        name="state"
+        disabled
+        formControlName="state"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+
+  <div class="Available" *ngIf="(AvailableEx$ | async)">
+    <span>Available Exercise</span>
+    <div>{{ (AvailableEx$ | async).id }}</div>
+    <div>{{ (AvailableEx$ | async).name }}</div>
+    <div>{{ (AvailableEx$ | async).duration }}</div>
+    <div>{{ (AvailableEx$ | async).calories }}</div>
+    <div>{{ (AvailableEx$ | async).state }}</div>
+  </div>
+  <div class="Completed" *ngIf="(CompletedEx$ | async)">
+    <span>Completed Exercise</span>
+    <div>{{ (CompletedEx$ | async).id }}</div>
+    <div>{{ (CompletedEx$ | async).name }}</div>
+    <div>{{ (CompletedEx$ | async).duration }}</div>
+    <div>{{ (CompletedEx$ | async).calories }}</div>
+    <div>{{ (CompletedEx$ | async).state }}</div>
+  </div>
+  <!-- addNewToAvailable -->
+  <!--
+    <button (click)="addToAvailable()" class="btn btn-success">
+      Add to Available
+    </button>
+    <button (click)="addNewToAvailable()" class="btn btn-success">
+      Add More to Available
+    </button>
+    <button (click)="addToCompleted()" class="btn btn-success">
+      Add to completed
+    </button>
+  -->
+
+  <div class="container1">
+    <div class="box_A"><app-blue> </app-blue></div>
+    <div class="box_B"><app-green></app-green></div>
+  </div>
 </div>
 
-<!-- <button (click)="changeStatusTrue()">True Status</button>
-<button (click)="changeStatusFalse()"> False Status</button> -->
+<!-- End From -->
 
-<!-- <div *ngIf="post | async as p">
+<!--
+  <button (click)="changeStatusTrue()">True Status</button>
+  <button (click)="changeStatusFalse()"> False Status</button>
+-->
+
+<!--
+  <div *ngIf="post | async as p">
 
 
-  <h2>{{ p.text }}</h2>
-  <h4>Votes: {{ p.likes }}</h4>
+    <h2>{{ p.text }}</h2>
+    <h4>Votes: {{ p.likes }}</h4>
 
-  <button (click)="upvote()">Upvote</button>
-  <button (click)="downvote()">Downvote</button>
-  <button (click)="resetPost()">Reset</button>
+    <button (click)="upvote()">Upvote</button>
+    <button (click)="downvote()">Downvote</button>
+    <button (click)="resetPost()">Reset</button>
 
-  <input [(ngModel)]="text">
-  <button (click)="editText()" >Change Title</button>
+    <input [(ngModel)]="text">
+    <button (click)="editText()" >Change Title</button>
 
-</div> -->
+  </div>
+-->

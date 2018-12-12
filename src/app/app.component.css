@@ -1,31 +1,35 @@
-.Available{
-    border: solid blue 2px;
-    margin: 2px;
+.Available {
+  border: solid blue 2px;
+  margin: 2px;
+  padding: 4px;
 }
-.Completed{
-    border: solid green 2px;
-    margin: 2px;
+.Completed {
+  border: solid green 2px;
+  margin: 2px;
+  padding: 4px;
 }
-.container {
-    height: 250px;
+.container1 {
+  height: 250px;
+  display: flex;
+  /* margin: auto; */
+  /* display: inline-block; */
 }
 
-.container .box_A,
-.container .box_B {
-    margin: 2px;
-    width: 50%;
-    overflow: hidden;
-    height: 100%;
-    -webkit-font-smoothing: antialiased;
-    -webkit-transition: all .3s;
-    -moz-transition: all .3s;
-    -o-transition: all .3s;
-    transition: all .3s;
+.container1 .box_A,
+.container1 .box_B {
+  margin: 2px;
+}
+.btn {
+  margin: 2px;
 }
 
 .box_A {
-    border: solid blue 2px;
+  border: solid blue 2px;
+  padding: 4px;
+  flex: 0 0 50%;
 }
 .box_B {
-    border: solid green 2px;
+  border: solid green 2px;
+  padding: 4px;
+  flex: 1;
 }
