@@ -9,8 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { BlueComponent } from './blue/blue.component';
 import { GreenComponent } from './green/green.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeviceMotionComponent } from './device-motion/device-motion.component';
 @NgModule({
-  declarations: [AppComponent, BlueComponent, GreenComponent],
+  declarations: [AppComponent, BlueComponent, GreenComponent, DeviceMotionComponent],
   imports: [
     BrowserModule,
     FormsModule,

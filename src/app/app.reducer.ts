@@ -2,11 +2,11 @@ import {
   ActionReducerMap,
   createFeatureSelector,
   createSelector
-} from "@ngrx/store";
-import * as fromAuth from "./reducers/auth.reducer";
-import * as fromTraining from "./reducers/training.reducer";
-import { AuthenticatedState } from "./models/auth.model";
-import { TrainingState } from "./models/training.model";
+} from '@ngrx/store';
+import * as fromAuth from './reducers/auth.reducer';
+import * as fromTraining from './reducers/training.reducer';
+import { AuthenticatedState } from './models/auth.model';
+import { TrainingState } from './models/training.model';
 
 export interface State {
   auth: AuthenticatedState;
@@ -18,14 +18,14 @@ export const reducers: ActionReducerMap<State> = {
   training: fromTraining.trainingReducer
 };
 
-export const getAuthState = createFeatureSelector<AuthenticatedState>("auth");
+export const getAuthState = createFeatureSelector<AuthenticatedState>('auth');
 export const getIsAuthenticated = createSelector(
   getAuthState,
   fromAuth.getIsAuth
 );
 
 export const getTrainingState = createFeatureSelector<TrainingState>(
-  "training"
+  'training'
 );
 export const getAvailableTraining = createSelector(
   getTrainingState,
